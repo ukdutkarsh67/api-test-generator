@@ -38,7 +38,7 @@ This project provides a solution for automatically converting Postman collection
 1. Ensure your Postman collection files (in JSON format) are placed in the `collections` directory.
 2. Run the script to generate Playwright test cases:
     ```bash
-    node convertCollections.js
+    node generateTestCases.js
     ```
 3. Run the generated Playwright test cases:
     ```bash
@@ -47,19 +47,11 @@ This project provides a solution for automatically converting Postman collection
 
 ## Project Structure
 
-api-test-generator-playwright/
-├── collections/ # Directory containing Postman collection files
-│ ├── ReqResUser.postman_collection.json
-│ └── PetStore.postman_collection.json
-├── tests/ # Directory where generated Playwright test scripts are saved
-│ ├── ReqResUser.postman_collection.spec.js
-│ └── PetStore.postman_collection.spec.js
-├── convertCollections.js # Script to convert Postman collections to Playwright test scripts
-├── package.json # Project dependencies and scripts
-└── README.md # Project documentation
+<img width="509" alt="image" src="https://github.com/ukdutkarsh67/api-test-generator/assets/60280993/bcb0734c-b0de-43e5-9279-c29768ce687c">
 
 
-### convertCollections.js
+
+### generateTestCases.js
 
 This script is the core of the project, responsible for converting Postman collections into Playwright test scripts.
 
@@ -126,15 +118,4 @@ import path from 'path';
   createTestFile('PetStore.postman_collection.json', 'test/PetStore.postman_collection.spec.js');
 })();
 
-
-## Learning and Benefits
-
-- **Automation Benefits:** Automating the conversion of Postman collections into test scripts saves time and reduces manual effort.
-- **Playwright Proficiency:** Understanding how to leverage Playwright for API testing, including making HTTP requests and performing assertions.
-- **Project Structuring:** Learning to structure a project to support automated testing and ES module syntax.
-- **Error Handling:** Handling errors effectively when reading files and parsing JSON data.
-
-## Conclusion
-
-This project demonstrates the power of automation in API testing by converting Postman collections into Playwright test scripts. It highlights the efficiency gains and error reduction that can be achieved through automation. By integrating Playwright, this project provides a robust framework for validating APIs, making it a valuable tool for developers and testers.
 
