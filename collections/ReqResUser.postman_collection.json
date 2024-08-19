@@ -1,13 +1,34 @@
 {
 	"info": {
-		"_postman_id": "929d6cca-d75f-4a29-95c5-c10c043e2496",
+		"_postman_id": "88c44536-9e1a-47ff-a8af-0ea614054009",
 		"name": "ReqResUser",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30992162"
+		"_exporter_id": "30992162",
+		"_collection_link": "https://restless-satellite-664137.postman.co/workspace/POC~d44e964c-b908-4f28-a74f-5083d4aeb3d3/collection/30992162-88c44536-9e1a-47ff-a8af-0ea614054009?action=share&source=collection_link&creator=30992162"
 	},
 	"item": [
 		{
 			"name": "create_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {\r",
+   							" pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r",
+    						"});\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"pm.test(\"Verify whether the Response is in application/json\",function(){\r",
+							"    pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -37,6 +58,27 @@
 		},
 		{
 			"name": "get_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"name\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"first_name\");\r",
+							"});\r",
+							"pm.test(\"Verify whether the Response is in application/json\",function(){\r",
+							"    pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -58,12 +100,30 @@
 		},
 		{
 			"name": "update_userData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Verify whether the Response is in application/json\",function(){\r",
+							"    pm.response.to.have.header(\"content-type\",\"application/json; charset=utf-8\")\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"morpheus\",\r\n    \"job\": \"zion res\"\r\n}",
+					"raw": "{\r\n    \"name\": \"morpheuss\",\r\n    \"job\": \"zion res\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -87,10 +147,37 @@
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "Delete Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://reqres.in/api/users/2",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users",
+						"2"
+					]
+				}
 			},
 			"response": []
 		}
